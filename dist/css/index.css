@@ -1,0 +1,18 @@
+html,body,ul,li,p,img,a,span{margin:0;padding:0;}
+ul,li{list-style:none;}
+a{text-decoration:none;}
+/*首页路由*/
+.hbnews{width:100%;height:42px;background:#de2f31;color:#fff;text-align:center;line-height:42px;font-size:18px;}
+nav{width:100%;height:36px;background:#f0f5f9;font-size:15px;coloe:#000;line-height:36px;font-weight:600;text-align:center;}
+nav a{margin-left:22px;}
+li{width:100%;height:76px;border-bottom:1px solid #f0f0f0;padding-top:13px;}
+li p{float:left;margin-left:12px;width:222px;line-height:22px;}
+img{width:98px;height:70px;float:right;margin-right:12px;}
+a{color:#000000;font-size:13px;}
+a p span{color:#888;font-size:11px;}
+section{width:100%;height:48px;text-align:center;font-size:13px;color:#de2f31;line-height:48px;}
+.scrolltop{width:28px;height:28px;background:url(../../image/s.jpg) no-repeat center center #8c8e90;opacity:0.6;position:fixed;bottom:10%;right:10%;border-radius:2px;}
+footer{width:100%;height:88px;background:#f0f5f9;}
+footer span{float:left;width:46px;text-align:center;border-right:1px solid #d7dbde;}
+span a{font-size:12px;}
+/*星动态路由*/

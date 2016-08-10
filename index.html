@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="huabian">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script src="dist/js/angular.js"></script>
+		<script src="dist/js/angular-route.js"></script>
+		<link rel="stylesheet" href="dist/css/index.css" />
+		<link rel="stylesheet" href="dist/css/font-awesome.min.css" />
+	</head>
+	<body>
+		<header class="hbnews">花边新闻</header>
+		<nav>
+			<a href="#/xingnews">星动态</a>
+			<a href="#/drama">剧有料</a>
+			<a href="#/god">神爆料</a>
+			<a href="#/big">大咖秀</a>
+			<a href="#/happy">泛娱乐</a>
+		</nav>
+		<aside>
+			<isnavred></isnavred>
+		</aside>
+		<ul ng-view=""></ul>
+		<section>加载更多...</section>
+	</body>
+	<script>
+		var app = angular.module('huabian',['ngRoute']);
+		app.config(function($routeProvider){
+			$routeProvider.when('/index', {
+				controller: 'indexCtrl',
+				templateUrl: 'view/index.html'
+			}).when('/xingnews', {
+				controller: 'xingCtrl',
+				templateUrl: 'view/xingnews.html'
+			}).when('/drama', {
+				controller: 'dramaCtrl',
+				templateUrl: 'view/drama.html'
+			}).when('/god', {
+				controller: 'godCtrl',
+				templateUrl: 'view/god.html'
+			}).when('/big', {
+				controller: 'bigCtrl',
+				templateUrl: 'view/big.html'
+			}).when('/happy', {
+				controller: 'happyCtrl',
+				templateUrl: 'view/happy.html'
+			})
+			//如果找不到对应的路由那就跳到xingnews模版文件
+			.otherwise({
+				redirectTo: '/index'
+			})
+		});
+		app.controller('indexCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+			$scope.pageNum = 6;
+			$scope.getMore = function(){
+				$scope.pageNum += 6;
+				console.log($scope.pageNum);
+				$scope.clickMore($scope.pageNum);
+			}
+			$scope.clickMore = function(newsNum){
+				$http({
+					method: 'get',
+					url: 'getnews.php',
+					params: {
+						num:newsNum,
+						page:1,
+					},
+				}).success(function(data) {
+					console.log(data,data.newslist);
+					$scope.news = data.newslist;
+				})
+			}
+			$scope.clickMore($scope.pageNum);
+		}]);
+		app.controller('xingCtrl',['$scope',function($scope){
+			
+		}])
+	</script>
+</html>

@@ -1,0 +1,10 @@
+<li ng-repeat="new in news">
+	<a ng-href="{{new.url}}" ng-click="fnImgUrl()">
+		<p>
+			{{new.title}}<br/>
+			<span>{{new.ctime}}</span>
+		</p>
+		<img src="{{new.picUrl}}" alt="{{new.picUrl}}" />
+	</a>
+</li>
+<li class="scrolltop" ng-click="getMore()"></li>
